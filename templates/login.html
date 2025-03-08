@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>     Login</title>
+</head>
+<body>
+
+{% block content %}
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST"  action="{{ url_for('login')}}">
+        {{ form.hidden_tag() }}
+
+        <label>Email</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+        <br></br>
+
+        <label>Password</label>
+        {{ form.password }}
+        {% for error in form.password.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+        <br></br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p><a href="{{ url_for('register') }}">Don't have an account? Register</a></p>
+{% endblock %}    
+</body>
+</html>

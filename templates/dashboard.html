@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ user.username }}'s Details</h2>
+
+    <div class="profile-container">
+        <img src="{{ url_for('static', filename='images/' + (profile_pic or 'default_profile.png') ) }}" 
+             alt="Profile Picture" width="150">
+    </div>   
+
+    <strong>Name:</strong> {{ current_user.username }}<br>
+    <strong>ID:</strong> {{ current_user.id }}<br>
+    <strong>Email:</strong> {{ current_user.email }}<br>
+    <strong>Date Added:</strong> {{ current_user.date_added }}<br>
+
+    <a href="{{ url_for('upload_profile') }}">Upload New Profile Picture</a><br>
+    <a href="{{ url_for('logout') }}">LOGOUT</a>
+{% endblock %}

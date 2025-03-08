@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+
+<body>
+    {% extends "base.html" %}
+    {% block content%}
+    <h2>Update Profile</h2>
+
+    <form method="POST" action="{{ url_for('update', id=user.id) }}">
+        {{ form.hidden_tag() }}  
+
+        
+        <label for="username">Username:</label>
+        {{ form.username ()}}
+        {% for error in form.username.errors %}
+            <div style="color: red;">{{ error }}</div>
+        {% endfor %}
+        <br><br>
+
+        
+        <label for="email">Email:</label>
+        {{ form.email ()}}
+        {% for error in form.email.errors %}
+            <div style="color: red;">{{ error }}</div>
+        {% endfor %}
+        <br><br>
+
+        <label for="password">Old_password:</label>
+        {{ form.old_password() }}
+        {% for error in form.old_password.errors %}
+            <div style="color: red;">{{ error }}</div>
+        {% endfor %}
+        <br><br>
+
+        <label for="password">New_password:</label>
+        {{ form.new_password ()}}
+        {% for error in form.new_password.errors %}
+            <div style="color: red;">{{ error }}</div>
+        {% endfor %}
+        <br><br>
+
+        
+        <button type="submit">UPDATE</button>
+    </form>
+    {% endblock%}
+</body>
+
+</html>
